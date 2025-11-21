@@ -21,12 +21,16 @@ fun Navigation(startDestination: Destination = Destination.Splash) {
             }
         }
         composable<Destination.Login> {
-            LoginScreen{
+            LoginScreen(onLoginClicked = {
+                navController.navigate(Destination.Home)
+            }, onRegisterClicked =  {
                 navController.navigate(Destination.Register)
-            }
+            })
         }
         composable<Destination.Register> {
-            RegisterScreen()
+            RegisterScreen {
+                navController.popBackStack()
+            }
         }
         composable<Destination.Home> {
             // HomeScreen()

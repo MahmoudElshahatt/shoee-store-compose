@@ -18,7 +18,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -46,13 +45,14 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.shahtott.shoee_store_compose.R
 import com.shahtott.shoee_store_compose.ui.screens.common.LightStatusBarIcons
-import com.shahtott.shoee_store_compose.ui.theme.BabyBlue
+import com.shahtott.shoee_store_compose.ui.screens.common.PrimaryButton
 import com.shahtott.shoee_store_compose.ui.theme.GrayBorder
 import com.shahtott.shoee_store_compose.ui.theme.TextGray
 
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel(),
+    onLoginClicked: () -> Unit,
     onRegisterClicked: () -> Unit
 ) {
     val uiState by viewModel.loginState
@@ -61,7 +61,8 @@ fun LoginScreen(
         onEmailChange = viewModel::onEmailChange,
         password = uiState.password,
         onPasswordChange = viewModel::onPasswordChange,
-        onRegisterClicked = onRegisterClicked
+        onRegisterClicked = onRegisterClicked,
+        onLoginClicked = onLoginClicked
     )
 }
 
@@ -71,6 +72,7 @@ fun LoginContent(
     onEmailChange: (String) -> Unit,
     password: String,
     onPasswordChange: (String) -> Unit,
+    onLoginClicked: () -> Unit,
     onRegisterClicked: () -> Unit
 ) {
 
@@ -109,25 +111,15 @@ fun LoginContent(
         Spacer(modifier = Modifier.height(34.dp))
         EmailTextField(Modifier.padding(horizontal = 12.dp), email, onEmailChange)
         Spacer(modifier = Modifier.height(14.dp))
-        PasswordTextField(Modifier.padding(horizontal = 12.dp),"Your Password", password, onPasswordChange)
+        PasswordTextField(
+            Modifier.padding(horizontal = 12.dp),
+            "Your Password",
+            password,
+            onPasswordChange
+        )
         Spacer(modifier = Modifier.height(24.dp))
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 12.dp)
-                .height(56.dp),
-            shape = RoundedCornerShape(6.dp),
-            colors = ButtonDefaults.buttonColors().copy(containerColor = BabyBlue),
-            onClick = { }
-        ) {
-            Text(
-                text = "Sign In",
-                color = Color.White,
-                style = MaterialTheme.typography.labelLarge.copy(
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            )
+        PrimaryButton(text = "Sign In") {
+            onLoginClicked()
         }
 
         Spacer(modifier = Modifier.height(26.dp))
@@ -370,8 +362,9 @@ fun SocialLoginButton(
     }
 }
 
+
 @Preview(showSystemUi = true)
 @Composable
 fun LoginScreenPreview() {
-    LoginScreen {}
+    LoginScreen(onLoginClicked = {}, onRegisterClicked = {})
 }

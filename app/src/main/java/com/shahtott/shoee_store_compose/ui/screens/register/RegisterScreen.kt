@@ -1,10 +1,11 @@
 package com.shahtott.shoee_store_compose.ui.screens.register
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,7 +15,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -36,13 +36,17 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.shahtott.shoee_store_compose.R
 import com.shahtott.shoee_store_compose.ui.screens.common.LightStatusBarIcons
+import com.shahtott.shoee_store_compose.ui.screens.common.PrimaryButton
 import com.shahtott.shoee_store_compose.ui.screens.login.EmailTextField
 import com.shahtott.shoee_store_compose.ui.screens.login.PasswordTextField
 import com.shahtott.shoee_store_compose.ui.theme.TextGray
 
 
 @Composable
-fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
+fun RegisterScreen(
+    viewModel: RegisterViewModel = hiltViewModel(),
+    onSignInClicked: () -> Unit
+) {
     val uiState by viewModel.registerState
     RegisterContent(
         name = uiState.fullName,
@@ -52,7 +56,8 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
         password = uiState.password,
         onPasswordChange = viewModel::onPasswordChange,
         confirmPassword = uiState.confirmPassword,
-        onConfirmPasswordChange = viewModel::onConfirmPasswordChange
+        onConfirmPasswordChange = viewModel::onConfirmPasswordChange,
+        onSignInClicked = onSignInClicked
     )
 }
 
@@ -66,6 +71,7 @@ fun RegisterContent(
     onPasswordChange: (String) -> Unit,
     confirmPassword: String,
     onConfirmPasswordChange: (String) -> Unit,
+    onSignInClicked: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -116,10 +122,34 @@ fun RegisterContent(
         PasswordTextField(
             Modifier.padding(horizontal = 12.dp),
             "Password Again",
-            password,
-            onPasswordChange
+            confirmPassword,
+            onConfirmPasswordChange
         )
+        Spacer(modifier = Modifier.height(24.dp))
 
+        PrimaryButton("Sign Up") {}
+
+        Row {
+            Text(
+                text = "have a account?",
+                color = TextGray,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = 14.sp
+                )
+            )
+            Text(
+                text = "Sign In",
+                modifier = Modifier
+                    .padding(horizontal = 4.dp)
+                    .clickable { onSignInClicked() },
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            )
+
+        }
     }
 }
 
@@ -169,5 +199,5 @@ fun NameTextField(
 @Preview(showSystemUi = true)
 @Composable
 fun LoginScreenPreview() {
-    RegisterScreen()
+    RegisterScreen{}
 }
