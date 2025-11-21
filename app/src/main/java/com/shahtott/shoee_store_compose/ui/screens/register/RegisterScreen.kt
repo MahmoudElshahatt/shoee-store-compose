@@ -35,8 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.shahtott.shoee_store_compose.R
-import com.shahtott.shoee_store_compose.ui.screens.common.LightStatusBarIcons
-import com.shahtott.shoee_store_compose.ui.screens.common.PrimaryButton
+import com.shahtott.shoee_store_compose.ui.common.LightStatusBarIcons
+import com.shahtott.shoee_store_compose.ui.common.PrimaryButton
 import com.shahtott.shoee_store_compose.ui.screens.login.EmailTextField
 import com.shahtott.shoee_store_compose.ui.screens.login.PasswordTextField
 import com.shahtott.shoee_store_compose.ui.theme.TextGray

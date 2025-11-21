@@ -13,11 +13,18 @@ class HomeViewModel @Inject constructor(
     private val _homeState = mutableStateOf(HomeState())
     val homeState: State<HomeState> = _homeState
 
+    fun onRefreshHome(){
+
+    }
 
 }
 
 data class HomeState(
-    val sliders: String = "",
+    val sliders: List<Slider> = emptyList(),
     val categories: String = "",
     val products: String = ""
+)
+
+data class Slider(
+    val image: String
 )

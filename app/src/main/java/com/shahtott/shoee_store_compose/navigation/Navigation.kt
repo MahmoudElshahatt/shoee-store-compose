@@ -1,4 +1,4 @@
-package com.shahtott.shoee_store_compose.ui.navigation
+package com.shahtott.shoee_store_compose.navigation
 
 
 import androidx.compose.runtime.Composable

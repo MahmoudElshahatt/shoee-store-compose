@@ -1,4 +1,4 @@
-package com.shahtott.shoee_store_compose.ui.screens.common
+package com.shahtott.shoee_store_compose.ui.common
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height

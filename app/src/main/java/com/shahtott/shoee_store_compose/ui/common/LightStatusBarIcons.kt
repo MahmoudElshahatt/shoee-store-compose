@@ -1,4 +1,4 @@
-package com.shahtott.shoee_store_compose.ui.screens.common
+package com.shahtott.shoee_store_compose.ui.common
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
