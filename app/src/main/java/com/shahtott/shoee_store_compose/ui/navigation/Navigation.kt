@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.shahtott.shoee_store_compose.ui.screens.home.HomeScreen
 import com.shahtott.shoee_store_compose.ui.screens.login.LoginScreen
 import com.shahtott.shoee_store_compose.ui.screens.register.RegisterScreen
 import com.shahtott.shoee_store_compose.ui.screens.splash.SplashScreen
@@ -23,7 +24,7 @@ fun Navigation(startDestination: Destination = Destination.Splash) {
         composable<Destination.Login> {
             LoginScreen(onLoginClicked = {
                 navController.navigate(Destination.Home)
-            }, onRegisterClicked =  {
+            }, onRegisterClicked = {
                 navController.navigate(Destination.Register)
             })
         }
@@ -33,7 +34,7 @@ fun Navigation(startDestination: Destination = Destination.Splash) {
             }
         }
         composable<Destination.Home> {
-            // HomeScreen()
+            HomeScreen()
         }
     }
 }
