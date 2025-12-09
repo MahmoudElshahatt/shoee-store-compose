@@ -13,8 +13,12 @@ class HomeViewModel @Inject constructor(
     private val _homeState = mutableStateOf(HomeState())
     val homeState: State<HomeState> = _homeState
 
-    fun onRefreshHome(){
+    fun onRefreshHome() {
 
+    }
+
+    fun onQueryChange(query: String) {
+        _homeState.value = _homeState.value.copy(query = query)
     }
 
 }
@@ -22,7 +26,8 @@ class HomeViewModel @Inject constructor(
 data class HomeState(
     val sliders: List<Slider> = emptyList(),
     val categories: String = "",
-    val products: String = ""
+    val products: String = "",
+    val query: String = "",
 )
 
 data class Slider(

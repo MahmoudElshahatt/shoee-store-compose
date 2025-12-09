@@ -36,14 +36,9 @@ fun ShoeeStoreComposeTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val colorScheme = when {
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-
     CompositionLocalProvider(LocalSpacing provides Spacing()) {
         MaterialTheme(
-            colorScheme = colorScheme,
+            colorScheme = LightColorScheme,
             typography = Typography,
             content = content
         )

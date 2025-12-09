@@ -76,4 +76,8 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.accompanist.systemuicontroller)
 
+    implementation(libs.coil.compose)
+    implementation(libs.coil.shimmer)
+
+
 }
