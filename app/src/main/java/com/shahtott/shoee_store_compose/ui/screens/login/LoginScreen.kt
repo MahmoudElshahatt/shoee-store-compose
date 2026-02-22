@@ -44,7 +44,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.shahtott.shoee_store_compose.R
-import com.shahtott.shoee_store_compose.ui.common.LightStatusBarIcons
 import com.shahtott.shoee_store_compose.ui.common.PrimaryButton
 import com.shahtott.shoee_store_compose.ui.theme.GrayBorder
 import com.shahtott.shoee_store_compose.ui.theme.TextGray
@@ -75,9 +74,6 @@ fun LoginContent(
     onLoginClicked: () -> Unit,
     onRegisterClicked: () -> Unit
 ) {
-
-    LightStatusBarIcons(false)
-
     Column(
         modifier = Modifier
             .fillMaxSize()
